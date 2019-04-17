@@ -7,7 +7,22 @@ var app = exp();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var moment = require ('moment');
 
+var tweets = [];
+var counter = 0;
+
+exports.createTwetts = function (author, description){
+    tweets.push (
+        {
+            'author' : author,
+            'data' : moment().format("DD/MM/YYYY"),
+            'description' : description,
+            id : counter++
+        }
+    );
+    return 'Create a new tweets';
+}
 
 app.listen(3001);
 
