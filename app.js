@@ -52,6 +52,16 @@ exports.listTweets = function () {
     return tweets;
 }
 
+exports.editTweetsById = function (id, description) {
+    for (var i = 0; i < tweets.length; i++) {
+        if ((tweets[i].id === id) && (tweets[i].description !== description)) {
+            tweets[i].description = description;
+            tweets[i].date = moment().format("DD/MM/YYYY");
+            return tweets;
+        }
+    }
+}
+
 app.listen(3001);
 
 module.exports = app;
