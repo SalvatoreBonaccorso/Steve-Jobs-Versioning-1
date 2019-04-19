@@ -38,6 +38,11 @@ exports.createTwetts = function (author, description){
     return 'Create a new tweets';
 }
 
+// funzione che mi mostra tutti la lista di tweets
+exports.listTweets = function () {
+    return tweets;
+}
+
 app.listen(3001);
 
 module.exports = app;
