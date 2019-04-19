@@ -52,6 +52,17 @@ exports.listTweets = function () {
     return tweets;
 }
 
+// funzione che mi mostra un tweet in base all'id
+exports.showTweetById = function (id) {
+    var filteredArray = [];
+    for (var tweet of tweets) {
+        if (tweet.id === id) {
+            filteredArray.push(tweet);
+        }
+    }
+    return filteredArray;
+}
+
 app.listen(3001);
 
 module.exports = app;
