@@ -47,6 +47,10 @@ exports.deleteTweetsById = function (id) {
         }
     }
 }
+// funzione che mi mostra tutti la lista di tweets
+exports.listTweets = function () {
+    return tweets;
+}
 
 app.listen(3001);
 
