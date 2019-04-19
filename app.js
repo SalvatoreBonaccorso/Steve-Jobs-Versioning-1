@@ -38,6 +38,16 @@ exports.createTwetts = function (author, description){
     return 'Create a new tweets';
 }
 
+// funzione che mi cancella un tweet in base al suo ID
+exports.deleteTweetsById = function (id) {
+    for (var i = 0; i < tweets.length; i++) {
+        if (tweets[i].id === id) {
+            tweets.splice(i, 1);
+            return tweets;
+        }
+    }
+}
+
 app.listen(3001);
 
 module.exports = app;
