@@ -51,6 +51,8 @@ exports.deleteTweetsById = function (id) {
 exports.listTweets = function () {
     return tweets;
 }
+// funzione che mi mostra tutti gli utenti inseriti
+
 
 app.listen(3001);
 
