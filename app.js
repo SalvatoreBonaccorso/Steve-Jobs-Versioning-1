@@ -7,7 +7,24 @@ var app = exp();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 var moment = require ('moment');
+=======
+// mi connetto al database
+const host = 'localhost';
+const dbName = 'myDatabase';
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://'+ host + '/' + dbName);
+
+var db = mongoose.connection;
+db.on('error', function() {
+console.error('Connection error!')
+});
+db.once('open', function() {
+console.log('DB connection Ready');
+});
+>>>>>>> develop
 
 var tweets = [];
 var counter = 0;
