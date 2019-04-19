@@ -51,6 +51,19 @@ exports.deleteTweetsById = function (id) {
 exports.listTweets = function () {
     return tweets;
 }
+// funzione che mi mostra tutti gli utenti inseriti
+
+
+// funzione che mi mostra un tweet in base all'id
+exports.showTweetById = function (id) {
+    var filteredArray = [];
+    for (var tweet of tweets) {
+        if (tweet.id === id) {
+            filteredArray.push(tweet);
+        }
+    }
+    return filteredArray;
+}
 
 exports.editTweetsById = function (id, description) {
     for (var i = 0; i < tweets.length; i++) {
