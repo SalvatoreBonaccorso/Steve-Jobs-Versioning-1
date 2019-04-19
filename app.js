@@ -22,6 +22,8 @@ db.once('open', function() {
 console.log('DB connection Ready');
 });
 
+// funzione che mi mostra tutti gli utenti inseriti
+
 
 app.listen(3001);
 
