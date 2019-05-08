@@ -33,5 +33,25 @@ router.get('/:id', function(req, res) {
         res.json(user);
     });
 });
+// API UPDATE PUT/ID
 
+router.put('/:id', function(req, res) {
+    User.findOne({_id: req.params.id})
+        .exec(function(err, user) {
+          if (err) return res.status(500).json({error: err});
+          if (!user) {
+            return res.status(404).json({message: 'Utente non trovato'});
+          }
+          for (key in req.body) {
+            if (req.body.hasOwnProperty(key)) {
+              user[key] = req.body[key];
+            }
+          }
+          user.save(function(err) {
+            if (err) return res.status(500).json({error: err});
+            res.json(user);
+          });
+        });
+  });
+  
 module.exports = router;
