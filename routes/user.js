@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const {check} = require('express-validator/check');
 var User = require('../models/user');
 
 // API list GET
