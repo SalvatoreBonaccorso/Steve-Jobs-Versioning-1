@@ -7,7 +7,9 @@ var app = exp();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var moment = require ('moment');
+var users = require('./routes/user');
+app.use('/users',users);
+
 // mi connetto al database
 const host = 'localhost';
 const dbName = 'myDatabase';
@@ -23,57 +25,8 @@ db.once('open', function() {
 console.log('DB connection Ready');
 });
 
-var tweets = [];
-var counter = 0;
-
-exports.createTwetts = function (author, description){
-    tweets.push (
-        {
-            'author' : author,
-            'data' : moment().format("DD/MM/YYYY"),
-            'description' : description,
-            id : counter++
-        }
-    );
-    return 'Create a new tweets';
-}
-
-// funzione che mi cancella un tweet in base al suo ID
-exports.deleteTweetsById = function (id) {
-    for (var i = 0; i < tweets.length; i++) {
-        if (tweets[i].id === id) {
-            tweets.splice(i, 1);
-            return tweets;
-        }
-    }
-}
-// funzione che mi mostra tutti la lista di tweets
-exports.listTweets = function () {
-    return tweets;
-}
-// funzione che mi mostra tutti gli utenti inseriti
-
-
-// funzione che mi mostra un tweet in base all'id
-exports.showTweetById = function (id) {
-    var filteredArray = [];
-    for (var tweet of tweets) {
-        if (tweet.id === id) {
-            filteredArray.push(tweet);
-        }
-    }
-    return filteredArray;
-}
-
-exports.editTweetsById = function (id, description) {
-    for (var i = 0; i < tweets.length; i++) {
-        if ((tweets[i].id === id) && (tweets[i].description !== description)) {
-            tweets[i].description = description;
-            tweets[i].date = moment().format("DD/MM/YYYY");
-            return tweets;
-        }
-    }
-}
+//uso dello schema
+var User = require('./models/user');
 
 app.listen(3001);
 
