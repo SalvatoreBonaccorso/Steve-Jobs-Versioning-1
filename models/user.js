@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
     name: String,
     surname: String,
-    email: Array,
+    email: String,
     dateOfBirth: String,
-    sesso: String
+    sex: String
 });
 
 var User = mongoose.model('User', userSchema);
