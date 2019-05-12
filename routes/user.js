@@ -16,7 +16,8 @@ router.post('/', [
     check('name').exists(),
     check('surname').exists(),
     check('email').isEmail(),
-    check('age').isInt(),
+    check('dateOfBirth').exists(),
+    check('sex').exists()
     ],
     function(req, res) {
     const newUser = new User(req.body);
